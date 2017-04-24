@@ -1,16 +1,15 @@
-vendor/
-node_modules/
+sdc_1718/vendor/
+sdc_1718/node_modules/
+sdc_1718/bootstrap/cache/
+sdc_1718/storage/
+sdc_1718/.env.*.php
+sdc_1718/.env.php
+sdc_1718/.env
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-bootstrap/cache/
-storage/
-.env.*.php
-.env.php
-.env
+/public_html/sdc_1718/hot
+/public_html/sdc_1718/img
+/public_html/sdc_1718/docs
+/public_html/sdc_1718/storage
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
