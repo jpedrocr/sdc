@@ -33,7 +33,7 @@
         <meta name="msapplication-TileImage" content="img/logo/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-        <title>{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }} - @yield('title')</title>
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">

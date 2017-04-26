@@ -1,0 +1,220 @@
+.navigation {
+  margin-bottom: 0px;
+}
+.banner {
+  background-color: lighten($cor-sdc, 6.5%);
+  margin-bottom: $spacing;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  color: #333;
+  background-color: #fff;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  margin-bottom: $footer-height+$spacing;
+}
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: $footer-height - $spacing;
+  .container-fluid {
+    background-color: lighten($cor-sdc, 25%);
+    padding-top: 15px;
+  }
+}
+.trans {
+  transition: all .5s ease;
+}
+.trans-enter, .trans-leave {
+  opacity: 0;
+  transform: translate3d(10px, 0, 0);
+}
+.img-datas {
+  max-height: 367px;
+  margin: auto auto;
+}
+.img-historia {
+  max-height: 525px;
+  margin: auto auto;
+}
+.img-orgaos {
+  max-height: 170px;
+  margin: auto auto;
+}
+.carousel.slide {
+  margin-bottom: 20px;
+  .panel {
+    margin-bottom: 0px;
+  }
+}
+p.slider {
+  margin: 0px;
+}
+.calendario {
+  border-collapse: separate;
+  margin-top: -13px;
+  thead {
+    visibility: hidden;
+  }
+  .detalhes_jogos>td {
+    border-top: 0px;
+    padding-bottom: 10px;
+  }
+}
+h4.galeria {
+  height: 85px;
+}
+p.treinadores {
+  height: 35px;
+}
+h3.parceiros {
+  font-size: 24px;
+}
+a.parceiros:hover, a.parceiros:focus {
+  text-decoration: none;
+}
+.panel.panel-default.parceiros {
+  height: 200px;
+}
+h2.equipas {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h3.equipas {
+  margin-top: 0px;
+}
+.img-treinadores {
+  width: 150px;
+  height: 150px;
+  margin: auto auto;
+}
+div.treinadores {
+}
+.equipas.nav > li > a {
+  padding: 6px 12px;
+}
+.equipas.nav-tabs {
+  border: 0px;
+  width: 100%;
+}
+.equipas.nav-tabs > li {
+  float: none;
+}
+.equipas.nav-tabs > li > a {
+    border: 1px solid #ccc;
+}
+.equipas.nav-tabs > li > a:hover {
+  border-color: #adadad;
+}
+.equipas.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.equipas.btn-group-vertical > li:first-child:not(:last-child) > .btn {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.equipas.btn-group-vertical > li:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.equipas.btn-group-vertical > li:last-child:not(:first-child) > .btn {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.equipas.col-xs-12 {
+  white-space: normal;
+}
+.publicacao.lista.media-object {
+  max-width: 120px;
+}
+.carousel.slide.imagem-original {
+  margin: 20px;
+}
+.modal-lg {
+  width: 95%;
+}
+
+.banner {
+  background-color: transparent;
+  margin-bottom: $spacing;
+}
+.banner-image {
+  background-color: #4682b4;
+  background: url('/../img/logo/banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  a:hover, a:focus {
+    text-decoration: none;
+  }
+}
+.banner-gradient {
+  background: -webkit-linear-gradient(left, rgba(70,130,180,0.8), rgba(70,130,180,0.5));
+  background: -o-linear-gradient(right, rgba(70,130,180,0.8), rgba(70,130,180,0.5));
+  background: -moz-linear-gradient(right, rgba(70,130,180,0.8), rgba(70,130,180,0.5));
+  background: linear-gradient(to right, rgba(70,130,180,0.8), rgba(70,130,180,0.5));
+}
+.banner-logo {
+  background: url('/../img/logo/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.banner-h1 {
+  font-family: Munich;
+  margin: 0px;
+  padding-top: 20px;
+  padding-left: 130px;
+  padding-bottom: 20px;
+  color: white;
+  em {
+    color: white;
+  };
+  a {
+    color: white;
+  };
+}
+@media (max-width: $screen-xs-max) {
+  .banner {
+    min-height: 160px;
+  }
+}
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .banner {
+    min-height: 160px;
+  }
+  div.slider {
+    height: 440px;
+  }
+}
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  .banner {
+    min-height: 157px;
+  }
+  div.slider {
+    height: 520px;
+  }
+}
+@media (min-width: $screen-lg-min) {
+  .banner {
+    min-height: 152px;
+  }
+  .banner-h1 {
+    font-size: 32px;
+  }
+  div.slider {
+    height: 600px;
+  }
+  p.fixa {
+    height: 60px;
+    margin: 0px;
+  }
+}
