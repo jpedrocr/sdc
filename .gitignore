@@ -6,10 +6,10 @@ sdc_1718/.env.*.php
 sdc_1718/.env.php
 sdc_1718/.env
 
-/public_html/sdc_1718/hot
-/public_html/sdc_1718/img
-/public_html/sdc_1718/docs
-/public_html/sdc_1718/storage
+/public_html/hot
+/public_html/img
+/public_html/docs
+/public_html/storage
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

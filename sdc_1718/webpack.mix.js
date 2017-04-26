@@ -11,5 +11,13 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.options({
+     extractVueStyles: false,
+     purifyCss: true,
+     clearConsole: false
+   })
+   .version()
+   .setPublicPath('../public_html')
+   .js('resources/assets/js/app.js', 'js')
+   .extract(['axios', 'bootstrap-sass', 'jquery', 'lodash', 'vue'])
+   .sass('resources/assets/sass/app.scss', 'css');
