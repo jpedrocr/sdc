@@ -33,10 +33,20 @@
         <meta name="msapplication-TileImage" content="img/logo/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-        <title>{{ config('app.name') }} - @yield('title')</title>
+		<!-- CSRF Token -->
+	    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Sangalhos DC') }} - @yield('title')</title>
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+
+		<!-- Scripts -->
+		<script>
+			window.Laravel = {!! json_encode([
+				'csrfToken' => csrf_token(),
+			]) !!};
+		</script>
 
     </head>
     <body>

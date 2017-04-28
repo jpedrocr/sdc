@@ -47,3 +47,7 @@ Route::get('/galeria', function () {
 Route::get('/contactos', function () {
     return view('contactos');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
