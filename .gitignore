@@ -13,6 +13,7 @@ sdc_1718/.env
 /public_html/img
 /public_html/js
 /public_html/storage
+/public_html/uploads/
 /public_html/mix-manifest.json
 /public_html/.htaccess
 
