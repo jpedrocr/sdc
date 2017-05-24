@@ -51,3 +51,8 @@ Route::get('/contactos', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
+    // Backpack\MenuCRUD
+    CRUD::resource('menu-item', 'MenuItemCrudController');
+});
