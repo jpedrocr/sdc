@@ -2,6 +2,7 @@ sdc_1718/vendor/
 sdc_1718/node_modules/
 sdc_1718/bootstrap/cache/
 sdc_1718/storage/
+sdc_1718/public/
 sdc_1718/.env.*.php
 sdc_1718/.env.php
 sdc_1718/.env
