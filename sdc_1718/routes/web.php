@@ -17,6 +17,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
+	$controller = config('backpack.articlemanager.admin_controller_class', 'ArticleCrudController');
+
+	// Backpack\PageManager routes
+    Route::get('article/create/{template}', $controller.'@create');
+    Route::get('article/{id}/edit/{template}', $controller.'@edit');
+
     // Backpack\NewsCRUD
     CRUD::resource('article', 'ArticleCrudController');
     CRUD::resource('category', 'CategoryCrudController');

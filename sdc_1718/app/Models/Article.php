@@ -22,13 +22,14 @@ class Article extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     // protected $guarded = ['id'];
-	protected $fillable = ['slug', 'title', 'content', 'image', 'status', 'featured', 'date'];
+	protected $fillable = ['slug', 'title', 'content', 'image', 'status', 'featured', 'date', 'template', 'extras'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [
         'featured'  => 'boolean',
         'date'      => 'date',
     ];
+	protected $fakeColumns = ['extras'];
 
     /**
      * Return the sluggable configuration array for this model.

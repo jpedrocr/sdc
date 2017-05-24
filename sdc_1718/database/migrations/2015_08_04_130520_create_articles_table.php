@@ -21,6 +21,8 @@ class CreateArticlesTable extends Migration
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('PUBLISHED');
             $table->date('date');
             $table->boolean('featured')->default(0);
+            $table->string('template');
+            $table->text('extras')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
