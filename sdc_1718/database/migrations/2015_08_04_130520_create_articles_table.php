@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->date('date');
             $table->boolean('featured')->default(0);
             $table->string('template');
-            $table->json('extras')->nullable();
+            $table->text('extras')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
