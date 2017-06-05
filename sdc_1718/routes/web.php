@@ -12,11 +12,9 @@
 */
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
-    // Backpack\MenuCRUD
+	// Backpack\MenuCRUD
     CRUD::resource('menu-item', 'MenuItemCrudController');
-});
 
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' => 'Admin'], function () {
 	$controller = config('backpack.articlemanager.admin_controller_class', 'ArticleCrudController');
 
 	// Backpack\PageManager routes
@@ -29,9 +27,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     CRUD::resource('tag', 'TagCrudController');
 });
 
-Route::get('/', function () {
-    return view('inicio');
-});
+Route::resource('noticias', 'ArticleController', ['only' => [
+    'index', 'show'
+]]);
+
 Route::get('historia', function () {
     return view('sdc-historia');
 });
@@ -50,20 +49,23 @@ Route::get('ligacoes', function () {
 Route::get('socios', function () {
     return view('sdc-socios');
 });
-Route::get('/equipas', function () {
+Route::get('equipas', function () {
     return view('welcome');
 });
-Route::get('/parcerias', function () {
+Route::get('parcerias', function () {
     return view('parcerias');
 });
-Route::get('/produtos', function () {
+Route::get('produtos', function () {
     return view('produtos');
 });
-Route::get('/galeria', function () {
+Route::get('galeria', function () {
     return view('welcome');
 });
-Route::get('/contactos', function () {
+Route::get('contactos', function () {
     return view('contactos');
+});
+Route::get('/', function () {
+    return view('inicio');
 });
 
 Auth::routes();

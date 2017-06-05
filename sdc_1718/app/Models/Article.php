@@ -6,6 +6,7 @@ use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Carbon\Carbon;
 
 class Article extends Model
 {
@@ -96,9 +97,65 @@ class Article extends Model
         return $this->title;
     }
 
-    /*
+	public function getCustomExtrasAttribute()
+    {
+		return json_decode($this->extras);
+    }
+
+	public function getCustomDateAttribute()
+    {
+        return Carbon::parse($this->date)->format('d/m/Y');
+    }
+
+	public function getCustomTitleAttribute()
+    {
+		$extras = $this->custom_extras;
+
+		if (isset($extras->json_titulo)) {
+            return $extras->json_titulo;
+        } else {
+			return $this->title;
+        }
+    }
+
+	public function getCustomImageAttribute()
+    {
+		$extras = $this->custom_extras;
+
+		if (isset($extras->json_imagem)) {
+            return $extras->json_imagem;
+		} else {
+			return $this->image;
+        }
+    }
+
+	public function getCustomSmallTextAttribute()
+    {
+		$extras = $this->custom_extras;
+
+		if (isset($extras->json_texto)) {
+            return $extras->json_texto;
+		} elseif (isset($extras->json_conteudo)) {
+			$resultado = array();
+
+			foreach (json_decode($extras->json_conteudo)->conteudo as $linha) {
+				if (in_array($linha->tipo, [ "h2", "normal", "small" ])) {
+					$resultado[] = $linha->conteudo;
+				} elseif ($linha->tipo == "separador") {
+					$resultado[] = "|";
+				}
+			}
+
+            return str_limit(implode(" ", $resultado), 180);
+		} else {
+			return "<!-- Texto -->";
+        }
+	}
+
+	/*
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
 }

@@ -1,0 +1,30 @@
+
+php artisan migrate
+php artisan migrate --path=vendor/backpack/langfilemanager/src/database/migrations
+php artisan db:seed --class="Backpack\LangFileManager\database\seeds\LanguageTableSeeder"
+php artisan db:seed --class="Backpack\Settings\database\seeds\SettingsTableSeeder"
+
+
+
+
+intervention/image suggests installing ext-imagick (to use Imagick based image processing.)
+intervention/image suggests installing intervention/imagecache (Caching extension for the Intervention Image library)
+league/flysystem-cached-adapter suggests installing ext-phpredis (Pure C implemented extension for PHP)
+studio-42/elfinder suggests installing google/apiclient (VolumeDriver GoogleDrive require `google/apiclient:^2.0.)
+studio-42/elfinder suggests installing kunalvarma05/dropbox-php-sdk (VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.)
+studio-42/elfinder suggests installing nao-pon/flysystem-google-drive (require in GoogleDrive network volume mounting with Flysystem.)
+barryvdh/elfinder-flysystem-driver suggests installing league/glide (1.x to display images through Glide)
+spatie/laravel-backup suggests installing maknz/slack (Allows notifications to be sent via Slack)
+spatie/laravel-backup suggests installing irazasyed/telegram-bot-sdk (Allows notifications to be sent using Telegram Bot)
+
+
+
+ext-imagick
+intervention/imagecache
+ext-phpredis
+google/apiclient
+kunalvarma05/dropbox
+nao-pon
+league/glide
+maknz/slack
+irazasyed/telegram-bot-sdk

@@ -44,6 +44,10 @@ class ArticleCrudController extends CrudController
                                 'name' => 'status',
                                 'label' => 'Status',
         ]);
+		$this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => 'Slugs',
+        ]);
         $this->crud->addColumn([
                                 'name' => 'title',
                                 'label' => 'Title',
@@ -53,13 +57,21 @@ class ArticleCrudController extends CrudController
                                 'label' => 'Featured',
                                 'type' => 'check',
         ]);
-        $this->crud->addColumn([
+		$this->crud->addColumn([
                                 'label' => 'Categories',
                                 'type' => 'select_multiple',
                                 'name' => 'categories',
                                 'entity' => 'categories',
                                 'attribute' => 'name',
                                 'model' => "App\Models\Category",
+        ]);
+		$this->crud->addColumn([
+                                'label' => 'Tags',
+                                'type' => 'select_multiple',
+                                'name' => 'tags',
+                                'entity' => 'tags',
+                                'attribute' => 'name',
+                                'model' => "App\Models\Tag",
         ]);
 		$this->crud->addColumn([
                                 'name' => 'template',
@@ -146,18 +158,18 @@ class ArticleCrudController extends CrudController
 								'value' => $template,
 								'allows_null' => false,
 		]);
-		$this->crud->addField([    // TEXT
-                                'name' => 'title',
-                                'label' => 'Title',
-                                'type' => 'text',
-                                'placeholder' => 'Your title here',
-        ]);
         $this->crud->addField([
                                 'name' => 'slug',
                                 'label' => 'Slug (URL)',
                                 'type' => 'text',
                                 'hint' => 'Will be automatically generated from your title, if left empty.',
                                 // 'disabled' => 'disabled'
+        ]);
+		$this->crud->addField([    // TEXT
+                                'name' => 'title',
+                                'label' => 'Title',
+                                'type' => 'text',
+                                'placeholder' => 'Your title here',
         ]);
 
         $this->crud->addField([    // TEXT
@@ -171,12 +183,6 @@ class ArticleCrudController extends CrudController
                                 'label' => 'Date',
                                 'type' => 'date',
         ], 'update');
-        $this->crud->addField([    // WYSIWYG
-                                'name' => 'content',
-                                'label' => 'Content',
-                                'type' => 'ckeditor',
-                                'placeholder' => 'Your textarea text here',
-        ]);
         $this->crud->addField([    // Image
                                 'name' => 'image',
                                 'label' => 'Image',
@@ -210,6 +216,12 @@ class ArticleCrudController extends CrudController
                                 'label' => 'Featured item',
                                 'type' => 'checkbox',
         ]);
+		$this->crud->addField([    // WYSIWYG
+								'name' => 'content',
+								'label' => 'Content',
+								'type' => 'ckeditor',
+								'placeholder' => 'Your textarea text here',
+		]);
     }
 
     /**
