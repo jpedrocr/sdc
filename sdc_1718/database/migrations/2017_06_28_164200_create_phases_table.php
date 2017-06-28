@@ -16,7 +16,7 @@ class CreatePhasesTable extends Migration
             $table->increments('id');
             $table->integer('sport_competition_id')->unsigned()->unique();
             $table->foreign('sport_competition_id')->references('id')->on('sport_competitions');
-            $table->string('name')->nullable();
+			$table->string('name')->nullable();
             $table->timestamps();
         });
     }

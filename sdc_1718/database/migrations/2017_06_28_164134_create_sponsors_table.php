@@ -14,7 +14,10 @@ class CreateSponsorsTable extends Migration
     {
         Schema::create('sponsors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+			$table->enum('category', ['-', 'Partner', 'Sponsor']);
+			$table->string('name');
+			$table->string('description')->nullable();
+			$table->string('url')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
