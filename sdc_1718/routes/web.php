@@ -25,6 +25,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     CRUD::resource('article', 'ArticleCrudController');
     CRUD::resource('category', 'CategoryCrudController');
     CRUD::resource('tag', 'TagCrudController');
+
+	// // Sports Content
+	// CRUD::resource('person', 'PersonCrudController');
+	// CRUD::resource('season', 'SeasonCrudController');
+	// CRUD::resource('team', 'TeamCrudController');
+    // CRUD::resource('game', 'GameCrudController');
+	//
 });
 
 Route::resource('noticias', 'ArticleController', ['only' => [

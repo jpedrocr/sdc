@@ -36,6 +36,16 @@
               </li>
             </ul>
           </li>
+		  <!-- <li class="treeview">
+		  	<a href="#"><i class="fa fa-building-o"></i> <span>Organization</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+			  <li><a href="{{ url('admin/person') }}"><i class="fa fa-user"></i> <span>People</span></a></li>
+			  <li><a href="{{ url('admin/season') }}"><i class="fa fa-calendar"></i> <span>Seasons</span></a></li>
+			  <li><a href="#"><i class="fa fa-dribbble"></i> <span>Sports Content</span></a></li>
+			  <li><a href="{{ url('admin/team') }}"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+			  <li><a href="{{ url('admin/game') }}"><i class="fa fa-calendar"></i> <span>Games &amp; Schedules</span></a></li>
+            </ul>
+          </li> -->
           <li class="treeview">
             <a href="#"><i class="fa fa-globe"></i> <span>Translations</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">

@@ -89,7 +89,7 @@ class ArticleCrudController extends CrudController
         // - default fields, that all templates are using, are set using $this->addDefaultArticleFields();
         // - template-specific fields are set per-template, in the ArticleTemplates trait;
 
-        $this->crud->enableAjaxTable();
+        // $this->crud->enableAjaxTable();
     }
 
 	// -----------------------------------------------
