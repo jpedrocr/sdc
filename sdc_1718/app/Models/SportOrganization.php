@@ -22,7 +22,7 @@ class SportOrganization extends Model
     protected $primaryKey = 'id';
 	public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'alternate_name', 'legal_name', 'founding_date', 'image', 'address', 'email', 'telephone', 'fax_number', 'url', 'slug', 'fpb_id', 'sport_venue_id', 'member_of'];
+    protected $fillable = ['name', 'alternate_name', 'legal_name', 'founding_date', 'image', 'address', 'email', 'telephone', 'fax_number', 'url', 'slug', 'fpb_id', 'sport_organization_type_id', 'sport_venue_id', 'member_of'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -50,13 +50,17 @@ class SportOrganization extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+	public function sport_organization_type()
+    {
+        return $this->belongsTo('App\Models\SportOrganizationType');
+    }
 	public function sport_venue()
     {
         return $this->belongsTo('App\Models\SportVenue');
     }
 	public function member_of_sport_organization()
     {
-        return $this->hasOne('App\Models\SportOrganization', 'member_of');
+        return $this->belongsTo('App\Models\SportOrganization', 'member_of');
     }
 	public function sport_teams()
     {

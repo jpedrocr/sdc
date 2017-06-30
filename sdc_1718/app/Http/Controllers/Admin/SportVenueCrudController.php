@@ -19,8 +19,8 @@ class SportVenueCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportVenue');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportvenue');
-        $this->crud->setEntityNameStrings('sportvenue', 'sport_venues');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-venue');
+        $this->crud->setEntityNameStrings('sport venue', 'sport venues');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,80 @@ class SportVenueCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+		$this->crud->addField([
+                                'name' => 'alternate_name',
+                                'label' => 'Alternate Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+		$this->crud->addField([
+							    'name' => 'address',
+							    'label' => 'Address',
+							    'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-9']
+		]);
+		$this->crud->addField([
+                                'name' => 'email',
+                                'label' => 'Email Address',
+                                'type' => 'email',
+        ]);
+		$this->crud->addField([
+                                'name' => 'telephone',
+                                'label' => 'Phone Number',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fax_number',
+                                'label' => 'Fax Number',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'fpb_id',
+								'label' => 'FPB Id',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'address',
+                                'label' => 'Address',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'email',
+                                'label' => 'Email',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'telephone',
+                                'label' => 'Phone Number',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'fax_number',
+                                'label' => 'Fax Number',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

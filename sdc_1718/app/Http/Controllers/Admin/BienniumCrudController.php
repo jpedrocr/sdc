@@ -28,15 +28,49 @@ class BienniumCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+								'name' => 'start_year',
+								'label' => 'Start Year',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => true,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+        ]);
+		$this->crud->addField([
+								'name' => 'end_year',
+								'label' => 'End Year',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => true,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'name' => 'start_year',
+								'label' => 'Start Year',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'end_year',
+								'label' => 'End Year',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -84,6 +118,7 @@ class BienniumCrudController extends CrudController
         // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
+		$this->crud->orderBy('start_year', 'desc');
         // $this->crud->addClause('active');
         // $this->crud->addClause('type', 'car');
         // $this->crud->addClause('where', 'name', '==', 'car');

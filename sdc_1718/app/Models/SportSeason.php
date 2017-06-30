@@ -22,6 +22,7 @@ class SportSeason extends Model
     protected $fillable = ['start_year', 'end_year'];
     // protected $hidden = [];
     protected $dates = ['start_year', 'end_year'];
+	protected $appends = ['name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ class SportSeason extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getNameAttribute()
+    {
+        return $this->start_year->year . '/' . $this->end_year->year;
+    }
 
     /*
     |--------------------------------------------------------------------------

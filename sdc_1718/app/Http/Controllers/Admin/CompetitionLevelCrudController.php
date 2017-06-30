@@ -19,8 +19,8 @@ class CompetitionLevelCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\CompetitionLevel');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/competitionlevel');
-        $this->crud->setEntityNameStrings('competitionlevel', 'competition_levels');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/competition-level');
+        $this->crud->setEntityNameStrings('competition level', 'competition levels');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,36 @@ class CompetitionLevelCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+		// $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+                                'type' => 'text',
+                                'hint' => 'Will be automatically generated from name, if left empty.',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

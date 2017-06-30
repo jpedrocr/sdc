@@ -15,7 +15,7 @@ class CreateBoardsTable extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('sport_organization_id')->unsigned()->unique();
+            $table->integer('sport_organization_id')->unsigned();
             $table->foreign('sport_organization_id')->references('id')->on('sport_organizations');
             $table->timestamps();
         });

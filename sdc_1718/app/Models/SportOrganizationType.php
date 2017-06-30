@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Biennium extends Model
+class SportOrganizationType extends Model
 {
     use CrudTrait;
 
@@ -15,14 +15,13 @@ class Biennium extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'biennia';
+    protected $table = 'sport_organization_types';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+	public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = ['start_year', 'end_year'];
+	protected $fillable = ['type', 'name', 'parent_id', 'lft', 'rgt', 'depth'];
     // protected $hidden = [];
-    protected $dates = ['start_year', 'end_year'];
-	protected $appends = ['name'];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -35,9 +34,9 @@ class Biennium extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-	public function board_registrations()
+	public function sport_organizations()
     {
-        return $this->hasMany('App\Models\BoardRegistration');
+        return $this->hasMany('App\Models\SportOrganization');
     }
 
     /*
@@ -51,10 +50,6 @@ class Biennium extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-	public function getNameAttribute()
-    {
-        return $this->start_year->year . '/' . $this->end_year->year;
-    }
 
     /*
     |--------------------------------------------------------------------------

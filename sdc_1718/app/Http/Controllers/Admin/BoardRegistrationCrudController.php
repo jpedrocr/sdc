@@ -19,8 +19,8 @@ class BoardRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\BoardRegistration');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/boardregistration');
-        $this->crud->setEntityNameStrings('boardregistration', 'board_registrations');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-registration');
+        $this->crud->setEntityNameStrings('board registration', 'board registrations');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,83 @@ class BoardRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+								'label' => "Biennium",
+							    'type' => 'select2',
+							    'name' => 'biennium_id',
+							    'entity' => 'biennium',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Biennium",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+								'label' => "Board",
+							    'type' => 'select2',
+							    'name' => 'board_id',
+							    'entity' => 'board',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Board",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+								'label' => "Board Role",
+							    'type' => 'select2',
+							    'name' => 'board_role_id',
+							    'entity' => 'board_role',
+							    'attribute' => 'name',
+							    'model' => "App\Models\BoardRole",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+								'label' => "Board Member",
+							    'type' => 'select2',
+							    'name' => 'board_member_id',
+							    'entity' => 'board_member',
+							    'attribute' => 'name',
+							    'model' => "App\Models\BoardMember",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'label' => "Biennium",
+							    'type' => 'select',
+							    'name' => 'biennium_id',
+							    'entity' => 'biennium',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Biennium",
+        ]);
+		$this->crud->addColumn([
+								'label' => "Board",
+							    'type' => 'select',
+							    'name' => 'board_id',
+							    'entity' => 'board',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Board",
+        ]);
+		$this->crud->addColumn([
+								'label' => "Board Role",
+							    'type' => 'select',
+							    'name' => 'board_role_id',
+							    'entity' => 'board_role',
+							    'attribute' => 'name',
+							    'model' => "App\Models\BoardRole",
+        ]);
+		$this->crud->addColumn([
+								'label' => "Board Member",
+							    'type' => 'select',
+							    'name' => 'board_member_id',
+							    'entity' => 'board_member',
+							    'attribute' => 'name',
+							    'model' => "App\Models\BoardMember",
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -84,6 +152,7 @@ class BoardRegistrationCrudController extends CrudController
         // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
+		$this->crud->orderBy('board_id', 'asc');
         // $this->crud->addClause('active');
         // $this->crud->addClause('type', 'car');
         // $this->crud->addClause('where', 'name', '==', 'car');

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\BoardRequest as StoreRequest;
-use App\Http\Requests\BoardRequest as UpdateRequest;
+use App\Http\Requests\SportOrganizationTypeRequest as StoreRequest;
+use App\Http\Requests\SportOrganizationTypeRequest as UpdateRequest;
 
-class BoardCrudController extends CrudController
+class SportOrganizationTypeCrudController extends CrudController
 {
     public function setup()
     {
@@ -18,9 +18,9 @@ class BoardCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Board');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board');
-        $this->crud->setEntityNameStrings('board', 'boards');
+        $this->crud->setModel('App\Models\SportOrganizationType');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-organization-type');
+        $this->crud->setEntityNameStrings('sport organization type', 'sport organization types');
 
         /*
         |--------------------------------------------------------------------------
@@ -32,20 +32,16 @@ class BoardCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Sport Organization",
-							    'type' => 'select',
-							    'name' => 'sport_organization_id',
-							    'entity' => 'sport_organization',
-							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
-								'value' => 2,
-								'wrapperAttributes' => ['class' => 'form-group col-md-4']
-        ]);
-		$this->crud->addField([
                                 'name' => 'name',
-                                'label' => 'Board Name',
+                                'label' => 'Name',
                                 'type' => 'text',
 								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+		$this->crud->addField([
+                                'name' => 'type',
+                                'label' => 'Type',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
         ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -54,17 +50,14 @@ class BoardCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Sport Organization",
-							    'type' => 'select',
-							    'name' => 'sport_organization_id',
-							    'entity' => 'sport_organization',
-							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+                                'name' => 'name',
+                                'label' => 'Name',
         ]);
 		$this->crud->addColumn([
-								'name' => 'name',
-								'label' => 'Board Name',
+                                'name' => 'type',
+                                'label' => 'Type',
         ]);
+
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -87,6 +80,8 @@ class BoardCrudController extends CrudController
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
+		$this->crud->enableReorder('name', 0);
+		$this->crud->allowAccess('reorder');
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
 
@@ -112,6 +107,7 @@ class BoardCrudController extends CrudController
         // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
+		$this->crud->orderBy('lft');
         // $this->crud->addClause('active');
         // $this->crud->addClause('type', 'car');
         // $this->crud->addClause('where', 'name', '==', 'car');

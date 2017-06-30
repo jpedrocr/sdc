@@ -15,7 +15,7 @@ class SportModality extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'sport_modalitys';
+    protected $table = 'sport_modalities';
     protected $primaryKey = 'id';
 	public $timestamps = true;
     // protected $guarded = ['id'];

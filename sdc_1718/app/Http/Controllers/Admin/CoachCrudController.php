@@ -28,15 +28,62 @@ class CoachCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+		// $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+								'label' => "Person",
+							    'name' => 'person_id',
+								'type' => 'select2',
+							    'entity' => 'person',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Person",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+							    'name' => 'coach_grade',
+							    'label' => 'Coach Grade',
+							    'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+		]);
+		$this->crud->addField([
+                                'name' => 'license',
+                                'label' => 'License',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'label' => "Person",
+								'name' => 'person_id',
+								'type' => 'select',
+								'entity' => 'person',
+								'attribute' => 'name',
+								'model' => "App\Models\Person",
+        ]);
+		$this->crud->addColumn([
+								'name' => 'coach_grade',
+								'label' => 'Coach Grade',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'license',
+								'label' => 'License',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'fpb_id',
+								'label' => 'FPB Id',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

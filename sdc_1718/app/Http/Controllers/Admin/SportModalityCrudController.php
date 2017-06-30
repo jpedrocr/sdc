@@ -19,8 +19,8 @@ class SportModalityCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportModality');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportmodality');
-        $this->crud->setEntityNameStrings('sportmodality', 'sport_modalities');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-modality');
+        $this->crud->setEntityNameStrings('sport modality', 'sport modalities');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,24 @@ class SportModalityCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'sport',
+                                'label' => 'Name',
+                                'type' => 'text',
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'sport',
+                                'label' => 'Name',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

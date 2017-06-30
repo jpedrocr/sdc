@@ -19,8 +19,8 @@ class RelevantEventCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\RelevantEvent');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/relevantevent');
-        $this->crud->setEntityNameStrings('relevantevent', 'relevant_events');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/relevant-event');
+        $this->crud->setEntityNameStrings('relevant event', 'relevant events');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,68 @@ class RelevantEventCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+								'label' => "Sport Organization",
+							    'type' => 'select',
+							    'name' => 'sport_organization_id',
+							    'entity' => 'sport_organization',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganization",
+								'value' => 2,
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+								'name' => 'event_date',
+								'label' => 'Event Date',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => false,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-4'],
+        ]);
+		$this->crud->addField([
+                                'name' => 'alternative_date',
+                                'label' => 'Alternative Date',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'description',
+                                'label' => 'Event Description',
+                                'type' => 'text',
+        ]);
+
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'label' => "Sport Organization",
+							    'type' => 'select',
+							    'name' => 'sport_organization_id',
+							    'entity' => 'sport_organization',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganization",
+        ]);
+		$this->crud->addColumn([
+								'name' => 'event_date',
+								'label' => 'Event Date',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'alternative_date',
+                                'label' => 'Alternative Date',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'description',
+                                'label' => 'Event Description',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -84,6 +137,7 @@ class RelevantEventCrudController extends CrudController
         // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
+		$this->crud->orderBy('event_date', 'alternative_date');
         // $this->crud->addClause('active');
         // $this->crud->addClause('type', 'car');
         // $this->crud->addClause('where', 'name', '==', 'car');

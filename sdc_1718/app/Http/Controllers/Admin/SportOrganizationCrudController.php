@@ -19,8 +19,8 @@ class SportOrganizationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportOrganization');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportorganization');
-        $this->crud->setEntityNameStrings('sportorganization', 'sport_organizations');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-organization');
+        $this->crud->setEntityNameStrings('sport organization', 'sport organizations');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,168 @@ class SportOrganizationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+		$this->crud->addField([
+                                'name' => 'alternate_name',
+                                'label' => 'Alternate Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'legal_name',
+                                'label' => 'Legal Name',
+                                'type' => 'text',
+        ]);
+		$this->crud->addField([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+                                'type' => 'text',
+                                'hint' => 'Will be automatically generated from name, if left empty.',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+        $this->crud->addField([
+								'label' => "FPB Type",
+							    'type' => 'select',
+							    'name' => 'sport_organization_type_id',
+							    'entity' => 'sport_organization_type',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganizationType",
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+		$this->crud->addField([
+							    'name' => 'address',
+							    'label' => 'Address',
+							    'type' => 'text',
+		]);
+		$this->crud->addField([
+								'name' => 'url',
+								'label' => 'Web Address',
+								'type' => 'url',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+		]);
+		$this->crud->addField([
+                                'name' => 'email',
+                                'label' => 'Email Address',
+                                'type' => 'email',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+                                'name' => 'telephone',
+                                'label' => 'Phone Number',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fax_number',
+                                'label' => 'Fax Number',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+								'label' => "Sport Venue",
+							    'type' => 'select',
+							    'name' => 'sport_venue_id',
+							    'entity' => 'sport_venue',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportVenue",
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+								'label' => "Member Of",
+							    'type' => 'select',
+							    'name' => 'member_of',
+							    'entity' => 'member_of_sport_organization',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganization",
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+                                'name' => 'image',
+                                'label' => 'Image',
+                                'type' => 'browse',
+								'wrapperAttributes' => ['class' => 'form-group col-md-9']
+        ]);
+		$this->crud->addField([
+								'name' => 'founding_date',
+								'label' => 'Founding Date',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => false,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'sport_organization_type_id',
+								'label' => "FPB Type",
+							    'type' => 'select',
+							    'entity' => 'sport_organization_type',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganizationType",
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'url',
+								'label' => 'Web Address',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'email',
+								'label' => 'Email Address',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'telephone',
+								'label' => 'Phone Number',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'fax_number',
+								'label' => 'Fax Number',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'sport_venue_id',
+								'label' => "Sport Venue",
+								'type' => 'select',
+							    'entity' => 'sport_venue',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportVenue",
+        ]);
+		$this->crud->addColumn([
+							    'name' => 'member_of',
+								'label' => "Member Of",
+								'type' => 'select',
+							    'entity' => 'member_of_sport_organization',
+							    'attribute' => 'name',
+							    'model' => "App\Models\SportOrganization",
+        ]);
+
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -84,6 +237,8 @@ class SportOrganizationCrudController extends CrudController
         // $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
+		$this->crud->orderBy('sport_organization_type_id');
+		// $this->crud->addClause('where', 'name', '==', 'car');
         // $this->crud->addClause('active');
         // $this->crud->addClause('type', 'car');
         // $this->crud->addClause('where', 'name', '==', 'car');

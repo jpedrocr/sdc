@@ -19,8 +19,8 @@ class SportSeasonCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportSeason');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportseason');
-        $this->crud->setEntityNameStrings('sportseason', 'sport_seasons');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-season');
+        $this->crud->setEntityNameStrings('sport season', 'sport seasons');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,49 @@ class SportSeasonCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
-        // ------ CRUD FIELDS
+		// ------ CRUD FIELDS
+		$this->crud->addField([
+								'name' => 'start_year',
+								'label' => 'Start Year',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => true,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+        ]);
+		$this->crud->addField([
+								'name' => 'end_year',
+								'label' => 'End Year',
+							   	'type' => 'date_picker',
+							   	'date_picker_options' => [
+							      	'todayBtn' => true,
+							      	'format' => 'dd-mm-yyyy',
+							      	'language' => 'en',
+							   ],
+							   'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'name' => 'start_year',
+								'label' => 'Start Year',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'end_year',
+								'label' => 'End Year',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

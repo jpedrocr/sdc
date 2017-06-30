@@ -19,8 +19,8 @@ class AgeGenderGroupCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\AgeGenderGroup');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/agegendergroup');
-        $this->crud->setEntityNameStrings('agegendergroup', 'age_gender_groups');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/age-gender-group');
+        $this->crud->setEntityNameStrings('age & gender group', 'age & gender groups');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,46 @@ class AgeGenderGroupCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'gender',
+                                'label' => 'Gender',
+                                'type' => 'enum',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+                                'type' => 'text',
+                                'hint' => 'Will be automatically generated from name, if left empty.',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'gender',
+                                'label' => 'Gender',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

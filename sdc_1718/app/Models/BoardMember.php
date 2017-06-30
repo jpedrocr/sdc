@@ -22,6 +22,7 @@ class BoardMember extends Model
     protected $fillable = ['person_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -34,6 +35,10 @@ class BoardMember extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+	public function person()
+    {
+        return $this->belongsTo('App\Models\Person');
+    }
 	public function board_registrations()
     {
         return $this->hasMany('App\Models\BoardRegistration');
@@ -54,6 +59,10 @@ class BoardMember extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getNameAttribute()
+    {
+        return $this->person->name;
+    }
 
     /*
     |--------------------------------------------------------------------------

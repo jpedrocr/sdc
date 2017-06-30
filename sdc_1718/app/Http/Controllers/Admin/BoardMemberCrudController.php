@@ -19,8 +19,8 @@ class BoardMemberCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\BoardMember');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/boardmember');
-        $this->crud->setEntityNameStrings('boardmember', 'board_members');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-member');
+        $this->crud->setEntityNameStrings('board member', 'board members');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,32 @@ class BoardMemberCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+								'label' => "Person",
+							    'type' => 'select2',
+							    'name' => 'person_id',
+							    'entity' => 'person',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Person",
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'label' => "Person",
+							    'type' => 'select',
+							    'name' => 'person_id',
+							    'entity' => 'person',
+							    'attribute' => 'name',
+							    'model' => "App\Models\Person",
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

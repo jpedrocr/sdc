@@ -18,13 +18,14 @@ class Person extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'persons';
+    protected $table = 'people';
     protected $primaryKey = 'id';
 	public $timestamps = true;
     // protected $guarded = ['id'];
     protected $fillable = ['given_name', 'additional_name', 'family_name', 'honorific_prefix', 'birth_date', 'nationality', 'gender', 'image', 'email', 'telephone', 'slug'];
     // protected $hidden = [];
     protected $dates = ['birth_date'];
+	protected $appends = ['name'];
 
     /*
     |--------------------------------------------------------------------------

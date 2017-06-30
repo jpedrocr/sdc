@@ -77,7 +77,7 @@ class AgeGenderGroup extends Model
             return $this->slug;
         }
 
-        return $this->name;
+        return $this->name . ' ' . str_limit($this->gender, 1);
     }
 
     /*

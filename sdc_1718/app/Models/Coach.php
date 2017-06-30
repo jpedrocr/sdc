@@ -15,13 +15,14 @@ class Coach extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'coachs';
+    protected $table = 'coaches';
     protected $primaryKey = 'id';
 	public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = ['person_id', 'person_id', 'license', 'coach_grade', 'fpb_id'];
+    protected $fillable = ['person_id', 'license', 'coach_grade', 'fpb_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ class Coach extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getNameAttribute()
+    {
+        return $this->person->name;
+    }
 
     /*
     |--------------------------------------------------------------------------

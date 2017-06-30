@@ -25,10 +25,12 @@ class CreateSportOrganizationsTable extends Migration
             $table->integer('fax_number')->nullable();
             $table->string('url')->nullable();
             $table->string('slug')->unique();
-            $table->integer('fpb_id')->unsigned()->unique()->nullable();
-            $table->integer('sport_venue_id')->unsigned()->unique();
+			$table->integer('fpb_id')->unsigned()->unique()->nullable();
+			$table->integer('sport_organization_type_id')->unsigned()->nullable();
+			$table->foreign('sport_organization_type_id')->references('id')->on('sport_organization_types');
+            $table->integer('sport_venue_id')->unsigned()->nullable();
             $table->foreign('sport_venue_id')->references('id')->on('sport_venues');
-            $table->integer('member_of')->unsigned()->unique()->nullable();
+            $table->integer('member_of')->unsigned()->nullable();
             $table->foreign('member_of')->references('id')->on('sport_organizations');
             $table->timestamps();
         });
