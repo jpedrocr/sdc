@@ -34,13 +34,13 @@ class SportVenue extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function games()
+    {
+        return $this->hasMany('App\Models\Game');
+    }
 	public function sport_organizations()
     {
         return $this->hasMany('App\Models\SportOrganization');
-    }
-	public function games()
-    {
-        return $this->hasMany('App\Models\Game');
     }
 
     /*

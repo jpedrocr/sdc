@@ -34,13 +34,13 @@ class SportTeamRegistration extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-	public function sport_teams()
+    public function sport_competition()
     {
-        return $this->hasMany('App\Models\SportTeam');
+        return $this->belongsTo('App\Models\SportCompetition');
     }
-	public function sport_competitions()
+	public function sport_team()
     {
-        return $this->hasMany('App\Models\SportCompetition');
+        return $this->belongsTo('App\Models\SportTeam');
     }
 
     /*

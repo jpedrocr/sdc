@@ -19,8 +19,8 @@ class AthleteRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\AthleteRegistration');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/athleteregistration');
-        $this->crud->setEntityNameStrings('athleteregistration', 'athlete_registrations');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/athlete-registration');
+        $this->crud->setEntityNameStrings('athlete registration', 'athlete registrations');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,66 @@ class AthleteRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+							    'name' => 'sport_team_id',
+                                'label' => 'Sport Team',
+                                'type' => 'select2',
+							    'entity' => 'sport_team',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportTeam',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+							    'name' => 'athlete_role_id',
+                                'label' => 'Athlete Role',
+                                'type' => 'select2',
+							    'entity' => 'athlete_role',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\AthleteRole',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+							    'name' => 'athlete_id',
+                                'label' => 'Athlete',
+                                'type' => 'select2',
+							    'entity' => 'athlete',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\Athlete',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn([
+							    'name' => 'sport_team_id',
+                                'label' => 'Sport Team',
+                                'type' => 'select',
+							    'entity' => 'sport_team',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportTeam',
+        ]);
+		$this->crud->addColumn([
+							    'name' => 'athlete_role_id',
+                                'label' => 'Athlete Role',
+                                'type' => 'select',
+							    'entity' => 'athlete_role',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\AthleteRole',
+        ]);
+		$this->crud->addColumn([
+							    'name' => 'athlete_id',
+                                'label' => 'Athlete',
+                                'type' => 'select',
+							    'entity' => 'athlete',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\Athlete',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

@@ -28,15 +28,48 @@ class TherapistCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+							    'name' => 'person_id',
+                                'label' => 'Person',
+								'type' => 'select2',
+							    'entity' => 'person',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\Person',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+                                'name' => 'license',
+                                'label' => 'License',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'name' => 'person_id',
+                                'label' => 'Person',
+								'type' => 'select',
+								'entity' => 'person',
+								'attribute' => 'name',
+								'model' => 'App\Models\Person',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'license',
+								'label' => 'License',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -45,6 +78,7 @@ class TherapistCrudController extends CrudController
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD BUTTONS
+        $this->crud->addButtonFromModelFunction('line', 'go_to_fpb', 'getFpbButton', 'end');
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model

@@ -25,6 +25,7 @@ class AgeGenderGroup extends Model
     protected $fillable = ['name', 'gender', 'slug'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['name_and_gender'];
 
     /*
     |--------------------------------------------------------------------------
@@ -50,13 +51,13 @@ class AgeGenderGroup extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function sport_competitions()
+    {
+        return $this->hasMany('App\Models\SportCompetition');
+    }
 	public function sport_teams()
     {
-        return $this->belongsToMany('App\Models\SportTeam');
-    }
-	public function sport_competitions()
-    {
-        return $this->belongsToMany('App\Models\SportCompetition');
+        return $this->hasMany('App\Models\SportTeam');
     }
 
     /*
@@ -77,7 +78,14 @@ class AgeGenderGroup extends Model
             return $this->slug;
         }
 
-        return $this->name . ' ' . str_limit($this->gender, 1);
+        return $this->name_and_gender;
+    }
+	public function getNameAndGenderAttribute()
+    {
+		if ($this->gender != '-') {
+			return $this->name . ' ' . substr($this->gender, 0, 1);
+		}
+		return $this->name;
     }
 
     /*

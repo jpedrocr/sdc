@@ -34,14 +34,14 @@ class Rank extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function phase()
+    {
+        return $this->belongsTo('App\Models\Phase');
+    }
 	public function sport_team()
 	{
-		return $this->hasMany('App\Models\SportTeam');
+		return $this->belongsTo('App\Models\SportTeam');
 	}
-	public function phase()
-    {
-        return $this->hasMany('App\Models\Phase');
-    }
 
     /*
     |--------------------------------------------------------------------------

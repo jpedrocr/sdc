@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTherapistRegistrationTable extends Migration
+class CreateTherapistRegistrationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateTherapistRegistrationTable extends Migration
      */
     public function up()
     {
-        Schema::create('therapist_registration', function (Blueprint $table) {
+        Schema::create('therapist_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('therapist_id')->unsigned()->unique();
+            $table->integer('therapist_id')->unsigned();
             $table->foreign('therapist_id')->references('id')->on('therapists');
-            $table->integer('sport_team_id')->unsigned()->unique();
+            $table->integer('sport_team_id')->unsigned();
             $table->foreign('sport_team_id')->references('id')->on('sport_teams');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateTherapistRegistrationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('therapist_registration');
+        Schema::drop('therapist_registrations');
     }
 }

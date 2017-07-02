@@ -19,8 +19,8 @@ class AthleteRoleCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\AthleteRole');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/athleterole');
-        $this->crud->setEntityNameStrings('athleterole', 'athlete_roles');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/athlete-role');
+        $this->crud->setEntityNameStrings('athlete role', 'athlete roles');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,24 @@ class AthleteRoleCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

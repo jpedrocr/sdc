@@ -51,13 +51,17 @@ class Person extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function athlete()
+    {
+        return $this->hasOne('App\Models\Athlete');
+    }
+    public function board_member()
+    {
+        return $this->hasOne('App\Models\BoardMember');
+    }
 	public function coach()
     {
         return $this->hasOne('App\Models\Coach');
-    }
-	public function athlete()
-    {
-        return $this->hasOne('App\Models\Athlete');
     }
 	public function team_assistant()
     {
@@ -66,10 +70,6 @@ class Person extends Model
 	public function therapist()
     {
         return $this->hasOne('App\Models\Therapist');
-    }
-	public function board_member()
-    {
-        return $this->hasOne('App\Models\BoardMember');
     }
 
     /*

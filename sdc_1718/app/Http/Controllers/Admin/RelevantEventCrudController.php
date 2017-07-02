@@ -32,12 +32,12 @@ class RelevantEventCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Sport Organization",
-							    'type' => 'select',
-							    'name' => 'sport_organization_id',
+                                'name' => 'sport_organization_id',
+                                'label' => 'Sport Organization',
+                                'type' => 'select',
 							    'entity' => 'sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
 								'value' => 2,
 								'wrapperAttributes' => ['class' => 'form-group col-md-4']
         ]);
@@ -71,20 +71,16 @@ class RelevantEventCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Sport Organization",
+								'label' => 'Sport Organization',
 							    'type' => 'select',
 							    'name' => 'sport_organization_id',
 							    'entity' => 'sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
         ]);
 		$this->crud->addColumn([
-								'name' => 'event_date',
-								'label' => 'Event Date',
-        ]);
-		$this->crud->addColumn([
-                                'name' => 'alternative_date',
-                                'label' => 'Alternative Date',
+								'name' => 'date',
+								'label' => 'Date',
         ]);
 		$this->crud->addColumn([
                                 'name' => 'description',

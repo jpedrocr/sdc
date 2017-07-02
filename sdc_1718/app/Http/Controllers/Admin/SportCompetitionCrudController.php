@@ -19,8 +19,8 @@ class SportCompetitionCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportCompetition');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportcompetition');
-        $this->crud->setEntityNameStrings('sportcompetition', 'sport_competitions');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-competition');
+        $this->crud->setEntityNameStrings('sport competition', 'sport competitions');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,134 @@ class SportCompetitionCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+        $this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+		$this->crud->addField([
+                                'name' => 'alternate_name',
+                                'label' => 'Alternate Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+        $this->crud->addField([
+                                'name' => 'image',
+                                'label' => 'Image',
+                                'type' => 'browse',
+								'wrapperAttributes' => ['class' => 'form-group col-md-9']
+        ]);
+        $this->crud->addField([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+                                'type' => 'text',
+                                'hint' => 'Will be automatically generated from name, if left empty.',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+        $this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'age_gender_group_id',
+								'label' => 'Age Gender Group',
+							    'type' => 'select2',
+							    'entity' => 'age_gender_group',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\AgeGenderGroup',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'competition_level_id',
+								'label' => 'Competition Level',
+							    'type' => 'select2',
+							    'entity' => 'competition_level',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\CompetitionLevel',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'sport_season_id',
+								'label' => 'Sport Season',
+							    'type' => 'select2',
+							    'entity' => 'sport_season',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportSeason',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'sport_modality_id',
+								'label' => 'Modality',
+							    'type' => 'select2',
+							    'entity' => 'sport_modality',
+							    'attribute' => 'sport',
+							    'model' => 'App\Models\Modality',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'alternate_name',
+                                'label' => 'Alternate Name',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'image',
+                                'label' => 'Image',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'age_gender_group_id',
+								'label' => 'Age Gender Group',
+							    'type' => 'select',
+							    'entity' => 'age_gender_group',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\AgeGenderGroup',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'competition_level_id',
+								'label' => 'Competition Level',
+							    'type' => 'select',
+							    'entity' => 'competition_level',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\CompetitionLevel',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'sport_season_id',
+								'label' => 'Sport Season',
+							    'type' => 'select',
+							    'entity' => 'sport_season',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportSeason',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'sport_modality_id',
+								'label' => 'Modality',
+							    'type' => 'select',
+							    'entity' => 'sport_modality',
+							    'attribute' => 'sport',
+							    'model' => 'App\Models\Modality',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

@@ -43,10 +43,6 @@ class BoardMember extends Model
     {
         return $this->hasMany('App\Models\BoardRegistration');
     }
-	public function games()
-    {
-        return $this->hasMany('App\Models\Game');
-    }
 
     /*
     |--------------------------------------------------------------------------

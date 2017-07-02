@@ -14,9 +14,9 @@ class CreatePhasesTable extends Migration
     {
         Schema::create('phases', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sport_competition_id')->unsigned()->unique();
+            $table->integer('sport_competition_id')->unsigned();
             $table->foreign('sport_competition_id')->references('id')->on('sport_competitions');
-			$table->string('name')->nullable();
+			$table->string('name');
             $table->timestamps();
         });
     }

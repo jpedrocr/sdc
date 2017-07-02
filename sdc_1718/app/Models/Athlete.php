@@ -28,7 +28,7 @@ class Athlete extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-	public function person()
+    public function person()
     {
         return $this->belongsTo('App\Models\Person');
     }

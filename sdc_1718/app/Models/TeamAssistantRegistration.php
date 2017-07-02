@@ -22,6 +22,7 @@ class TeamAssistantRegistration extends Model
     protected $fillable = ['team_assistant_id', 'sport_team_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['sport_organization_name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -34,14 +35,14 @@ class TeamAssistantRegistration extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-	public function team_assistant()
-	{
-		return $this->belongsTo('App\Models\TeamAssistant');
-	}
 	public function sport_team()
 	{
 		return $this->belongsTo('App\Models\SportTeam');
 	}
+    public function team_assistant()
+    {
+        return $this->belongsTo('App\Models\TeamAssistant');
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ class TeamAssistantRegistration extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getSportOrganizationNameAttribute()
+	{
+		return $this->sport_team->sport_organization->name;
+	}
 
     /*
     |--------------------------------------------------------------------------

@@ -50,6 +50,10 @@ class SportOrganization extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function member_of_sport_organization()
+    {
+        return $this->belongsTo('App\Models\SportOrganization', 'member_of');
+    }
 	public function sport_organization_type()
     {
         return $this->belongsTo('App\Models\SportOrganizationType');
@@ -58,25 +62,21 @@ class SportOrganization extends Model
     {
         return $this->belongsTo('App\Models\SportVenue');
     }
-	public function member_of_sport_organization()
-    {
-        return $this->belongsTo('App\Models\SportOrganization', 'member_of');
-    }
-	public function sport_teams()
-    {
-        return $this->hasMany('App\Models\SportTeam');
-    }
-	public function boards()
+    public function boards()
     {
         return $this->hasMany('App\Models\Board');
     }
-	public function relevant_events()
+    public function relevant_events()
     {
         return $this->hasMany('App\Models\RelevantEvent');
     }
 	public function sport_organizations()
     {
         return $this->hasMany('App\Models\SportOrganization', 'member_of');
+    }
+    public function sport_teams()
+    {
+        return $this->hasMany('App\Models\SportTeam');
     }
 
     /*
@@ -99,6 +99,12 @@ class SportOrganization extends Model
 
         return $this->name;
     }
+	public function getFpbButton() {
+		if (isset($this->fpb_id)) {
+			return '<a href="http://www.fpb.pt/fpb2014/!site.go?s=1&show=' . $this->sport_organization_type->type . '&id=' . $this->fpb_id . '" target="_blank" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> FPB</a>';
+		}
+		return '';
+	}
 
     /*
     |--------------------------------------------------------------------------

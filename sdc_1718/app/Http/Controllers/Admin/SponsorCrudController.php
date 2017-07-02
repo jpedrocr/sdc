@@ -28,15 +28,66 @@ class SponsorCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+        $this->crud->addField([
+                                'name' => 'category',
+                                'label' => 'Category',
+                                'type' => 'enum',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+        $this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+        $this->crud->addField([
+                                'name' => 'description',
+                                'label' => 'Description',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+        $this->crud->addField([
+                                'name' => 'url',
+                                'label' => 'Web Address',
+                                'type' => 'url',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
+        $this->crud->addField([
+                                'name' => 'image',
+                                'label' => 'Image',
+                                'type' => 'browse',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn([
+                                'name' => 'category',
+                                'label' => 'Category',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'description',
+                                'label' => 'Description',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'sport_teams',
+								'label' => 'Sport Teams',
+								'type' => 'select_multiple',
+								'entity' => 'sport_teams', // the method that defines the relationship in your Model
+								'attribute' => 'name_and_season', // foreign key attribute that is shown to user
+								'model' => "App\Models\SportTeam", // foreign key model
+								'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

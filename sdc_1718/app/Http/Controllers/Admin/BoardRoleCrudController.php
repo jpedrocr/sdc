@@ -19,8 +19,8 @@ class BoardRoleCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\BoardRole');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-role');
-        $this->crud->setEntityNameStrings('board role', 'board roles');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-member-role');
+        $this->crud->setEntityNameStrings('board member role', 'board member roles');
 
         /*
         |--------------------------------------------------------------------------

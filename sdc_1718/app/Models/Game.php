@@ -36,7 +36,7 @@ class Game extends Model
     {
         return $this->belongsTo('App\Models\SportTeam', 'sport_team_home_id');
     }
-	public function sport_team_out()
+    	public function sport_team_out()
     {
         return $this->belongsTo('App\Models\SportTeam', 'sport_team_out_id');
     }

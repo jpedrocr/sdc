@@ -58,17 +58,21 @@ class SportCompetition extends Model
     {
         return $this->belongsTo('App\Models\CompetitionLevel');
     }
+    public function sport_modality()
+    {
+		return $this->belongsTo('App\Models\SportModality');
+    }
 	public function sport_season()
     {
-		return $this->belongsTo('App\Models\sport_season');
+		return $this->belongsTo('App\Models\SportSeason');
+    }
+    public function phases()
+    {
+        return $this->hasMany('App\Models\Phase');
     }
 	public function sport_team_registrations()
     {
         return $this->hasMany('App\Models\(SportTeamRegistration');
-    }
-	public function phases()
-    {
-        return $this->hasMany('App\Models\Phase');
     }
 
     /*

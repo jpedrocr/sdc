@@ -56,12 +56,12 @@ class SportOrganizationCrudController extends CrudController
 								'wrapperAttributes' => ['class' => 'form-group col-md-6']
         ]);
         $this->crud->addField([
-								'label' => "FPB Type",
+                                'name' => 'sport_organization_type_id',
+								'label' => 'FPB Type',
 							    'type' => 'select',
-							    'name' => 'sport_organization_type_id',
 							    'entity' => 'sport_organization_type',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganizationType",
+							    'model' => 'App\Models\SportOrganizationType',
 								'wrapperAttributes' => ['class' => 'form-group col-md-3']
         ]);
 		$this->crud->addField([
@@ -100,21 +100,21 @@ class SportOrganizationCrudController extends CrudController
 								'wrapperAttributes' => ['class' => 'form-group col-md-6']
         ]);
 		$this->crud->addField([
-								'label' => "Sport Venue",
+                                'name' => 'sport_venue_id',
+                                'label' => 'Sport Venue',
 							    'type' => 'select',
-							    'name' => 'sport_venue_id',
 							    'entity' => 'sport_venue',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportVenue",
+							    'model' => 'App\Models\SportVenue',
 								'wrapperAttributes' => ['class' => 'form-group col-md-6']
         ]);
 		$this->crud->addField([
-								'label' => "Member Of",
+                                'name' => 'member_of',
+								'label' => 'Member Of',
 							    'type' => 'select',
-							    'name' => 'member_of',
 							    'entity' => 'member_of_sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
 								'wrapperAttributes' => ['class' => 'form-group col-md-6']
         ]);
 		$this->crud->addField([
@@ -147,15 +147,11 @@ class SportOrganizationCrudController extends CrudController
         ]);
 		$this->crud->addColumn([
 								'name' => 'sport_organization_type_id',
-								'label' => "FPB Type",
+								'label' => 'FPB Type',
 							    'type' => 'select',
 							    'entity' => 'sport_organization_type',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganizationType",
-        ]);
-		$this->crud->addColumn([
-                                'name' => 'fpb_id',
-                                'label' => 'FPB Id',
+							    'model' => 'App\Models\SportOrganizationType',
         ]);
 		$this->crud->addColumn([
 								'name' => 'url',
@@ -175,19 +171,19 @@ class SportOrganizationCrudController extends CrudController
         ]);
 		$this->crud->addColumn([
 								'name' => 'sport_venue_id',
-								'label' => "Sport Venue",
+								'label' => 'Sport Venue',
 								'type' => 'select',
 							    'entity' => 'sport_venue',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportVenue",
+							    'model' => 'App\Models\SportVenue',
         ]);
 		$this->crud->addColumn([
 							    'name' => 'member_of',
-								'label' => "Member Of",
+								'label' => 'Member Of',
 								'type' => 'select',
 							    'entity' => 'member_of_sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
         ]);
 
         // $this->crud->addColumn(); // add a single column, at the end of the stack
@@ -198,6 +194,7 @@ class SportOrganizationCrudController extends CrudController
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD BUTTONS
+		$this->crud->addButtonFromModelFunction('line', 'go_to_fpb', 'getFpbButton', 'end');
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model

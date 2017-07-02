@@ -14,7 +14,7 @@ class CreateBoardRolesTable extends Migration
     {
         Schema::create('board_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }

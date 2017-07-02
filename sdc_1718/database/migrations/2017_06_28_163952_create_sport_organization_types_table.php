@@ -14,11 +14,11 @@ class CreateSportOrganizationTypesTable extends Migration
     {
         Schema::create('sport_organization_types', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('parent_id')->default(0)->nullable();
+            $table->integer('parent_id')->default(0)->nullable();
             $table->integer('lft')->unsigned()->nullable();
             $table->integer('rgt')->unsigned()->nullable();
             $table->integer('depth')->unsigned()->nullable();
-			$table->string('type')->unique();
+	        $table->string('type')->unique();
 			$table->string('name')->unique();
             $table->timestamps();
         });

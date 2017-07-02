@@ -22,6 +22,7 @@ class BoardRegistration extends Model
     protected $fillable = ['board_id', 'biennium_id', 'board_member_id', 'board_role_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['sport_organization_name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -34,13 +35,13 @@ class BoardRegistration extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function biennium()
+	{
+		return $this->belongsTo('App\Models\Biennium');
+	}
 	public function board()
 	{
 		return $this->belongsTo('App\Models\Board');
-	}
-	public function biennium()
-	{
-		return $this->belongsTo('App\Models\Biennium');
 	}
 	public function board_member()
 	{
@@ -62,6 +63,10 @@ class BoardRegistration extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getSportOrganizationNameAttribute()
+	{
+		return $this->board->sport_organization->name;
+	}
 
     /*
     |--------------------------------------------------------------------------

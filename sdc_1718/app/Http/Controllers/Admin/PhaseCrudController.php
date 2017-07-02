@@ -28,15 +28,42 @@ class PhaseCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+                                'name' => 'sport_competition_id',
+                                'label' => 'Sport Competition',
+							    'type' => 'select2',
+							    'entity' => 'sport_competition',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportCompetition',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+        ]);
+		$this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-8']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+                                'name' => 'sport_competition_id',
+                                'label' => 'Sport Competition',
+							    'type' => 'select',
+							    'entity' => 'sport_competition',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportCompetition',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'name',
+								'label' => 'Name',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

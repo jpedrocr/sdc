@@ -19,8 +19,8 @@ class SportTeamCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\SportTeam');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sportteam');
-        $this->crud->setEntityNameStrings('sportteam', 'sport_teams');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/sport-team');
+        $this->crud->setEntityNameStrings('sport team', 'sport teams');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,145 @@ class SportTeamCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+        $this->crud->addField([
+                                'name' => 'name',
+                                'label' => 'Name',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+        $this->crud->addField([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+                                'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+		$this->crud->addField([
+                                'name' => 'fpb_id',
+                                'label' => 'FPB Id',
+                                'type' => 'number',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'sport_organization_id',
+								'label' => 'Sport Organization',
+							    'type' => 'select2',
+							    'entity' => 'sport_organization',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportOrganization',
+								'value' => 2,
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'sport_modality_id',
+								'label' => 'Modality',
+							    'type' => 'select2',
+							    'entity' => 'sport_modality',
+							    'attribute' => 'sport',
+							    'model' => 'App\Models\SportModality',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'age_gender_group_id',
+								'label' => 'Age Gender Group',
+							    'type' => 'select2',
+							    'entity' => 'age_gender_group',
+							    'attribute' => 'name_and_gender',
+							    'model' => 'App\Models\AgeGenderGroup',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'competition_level_id',
+								'label' => 'Competition Level',
+							    'type' => 'select2',
+							    'entity' => 'competition_level',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\CompetitionLevel',
+								'wrapperAttributes' => ['class' => 'form-group col-md-3']
+        ]);
+        $this->crud->addField([
+                                'name' => 'sport_season_id',
+								'label' => 'Sport Season',
+							    'type' => 'select2',
+							    'entity' => 'sport_season',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportSeason',
+								'value' => 2,
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+        ]);
+		$this->crud->addField([
+								'name' => 'image',
+								'label' => 'Image',
+								'type' => 'browse',
+								'wrapperAttributes' => ['class' => 'form-group col-md-6']
+		]);
+        $this->crud->addField([
+                                'name' => 'sponsors',
+                                'label' => 'Sponsors',
+                                'type' => 'select2_multiple',
+                                'entity' => 'sponsors', // the method that defines the relationship in your Model
+                                'attribute' => 'name', // foreign key attribute that is shown to user
+                                'model' => "App\Models\Sponsor", // foreign key model
+                                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+		$this->crud->addColumn([
+								'name' => 'sport_organization_id',
+								'label' => 'Sport Organization',
+								'type' => 'select',
+								'entity' => 'sport_organization',
+								'attribute' => 'name',
+								'model' => 'App\Models\SportOrganization',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'sport_season_id',
+								'label' => 'Sport Season',
+							    'type' => 'select',
+							    'entity' => 'sport_season',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\SportSeason',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'name',
+                                'label' => 'Name',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'age_gender_group_id',
+								'label' => 'Age Gender Group',
+							    'type' => 'select',
+							    'entity' => 'age_gender_group',
+							    'attribute' => 'name_and_gender',
+							    'model' => 'App\Models\AgeGenderGroup',
+        ]);
+        $this->crud->addColumn([
+                                'name' => 'competition_level_id',
+								'label' => 'Competition Level',
+							    'type' => 'select',
+							    'entity' => 'competition_level',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\CompetitionLevel',
+        ]);
+		$this->crud->addColumn([
+                                'name' => 'slug',
+                                'label' => 'Slug',
+        ]);
+		$this->crud->addColumn([
+								'name' => 'sponsors',
+								'label' => 'Sponsors',
+								'type' => 'select_multiple',
+								'entity' => 'sponsors', // the method that defines the relationship in your Model
+								'attribute' => 'name', // foreign key attribute that is shown to user
+								'model' => "App\Models\Sponsor", // foreign key model
+								'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -45,6 +175,7 @@ class SportTeamCrudController extends CrudController
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD BUTTONS
+		$this->crud->addButtonFromModelFunction('line', 'go_to_fpb', 'getFpbButton', 'end');
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model

@@ -22,6 +22,7 @@ class CoachRegistration extends Model
     protected $fillable = ['coach_id', 'sport_team_id', 'coach_role_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['sport_organization_name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -38,13 +39,13 @@ class CoachRegistration extends Model
 	{
 		return $this->belongsTo('App\Models\Coach');
 	}
+    public function coach_role()
+	{
+		return $this->belongsTo('App\Models\CoachRole');
+	}
 	public function sport_team()
 	{
 		return $this->belongsTo('App\Models\SportTeam');
-	}
-	public function athlete_role()
-	{
-		return $this->belongsTo('App\Models\AthleteRole');
 	}
 
     /*
@@ -58,6 +59,10 @@ class CoachRegistration extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getSportOrganizationNameAttribute()
+	{
+		return $this->sport_team->sport_organization->name;
+	}
 
     /*
     |--------------------------------------------------------------------------

@@ -38,13 +38,13 @@ class AthleteRegistration extends Model
 	{
 		return $this->belongsTo('App\Models\Athlete');
 	}
+    public function athlete_role()
+	{
+		return $this->belongsTo('App\Models\AthleteRole');
+	}
 	public function sport_team()
 	{
 		return $this->belongsTo('App\Models\SportTeam');
-	}
-	public function athlete_role()
-	{
-		return $this->belongsTo('App\Models\AthleteRole');
 	}
 
     /*

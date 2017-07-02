@@ -19,7 +19,7 @@
           <!-- ================================================ -->
           <!-- ==== Recommended place for admin menu items ==== -->
           <!-- ================================================ -->
-		  <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
+		  		<li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
           <li class="treeview">
             <a href="#"><i class="fa fa-file-text"></i> <span>Content</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
@@ -36,16 +36,6 @@
               </li>
             </ul>
           </li>
-		  <!-- <li class="treeview">
-		  	<a href="#"><i class="fa fa-building-o"></i> <span>Organization</span> <i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-			  <li><a href="{{ url('admin/person') }}"><i class="fa fa-user"></i> <span>People</span></a></li>
-			  <li><a href="{{ url('admin/season') }}"><i class="fa fa-calendar"></i> <span>Seasons</span></a></li>
-			  <li><a href="#"><i class="fa fa-dribbble"></i> <span>Sports Content</span></a></li>
-			  <li><a href="{{ url('admin/team') }}"><i class="fa fa-users"></i> <span>Teams</span></a></li>
-			  <li><a href="{{ url('admin/game') }}"><i class="fa fa-calendar"></i> <span>Games &amp; Schedules</span></a></li>
-            </ul>
-          </li> -->
           <li class="treeview">
             <a href="#"><i class="fa fa-globe"></i> <span>Translations</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
@@ -63,6 +53,100 @@
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
+            </ul>
+          </li>
+          <!-- ======================================= -->
+
+          <li class="treeview">
+            <a href="#"><i class="fa fa-building-o"></i> <span>SDC</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li class="treeview">
+                <a href="#"><i class="fa fa-building-o"></i> <span>Organization</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                  <li><a href="{{ url('admin/sport-organization-type') }}"><i class="fa fa-user"></i> <span>Sport Organization Types</span></a></li>
+                  <li><a href="{{ url('admin/sport-organization') }}"><i class="fa fa-user"></i> <span>Sport Organizations</span></a></li>
+                  <li><a href="{{ url('admin/relevant-event') }}"><i class="fa fa-user"></i> <span>Relevant Events</span></a></li>
+                  <li><a href="{{ url('admin/biennium') }}"><i class="fa fa-user"></i> <span>Biennia</span></a></li>
+                  <li><a href="{{ url('admin/sponsor') }}"><i class="fa fa-user"></i> <span>Sponsors</span></a></li>
+                  <li><a href="{{ url('admin/board') }}"><i class="fa fa-user"></i> <span>Boards</span></a></li>
+                </ul>
+              </li>
+              <li class="treeview">
+                <a href="#"><i class="fa fa-building-o"></i> <span>People</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                  <li><a href="{{ url('admin/person') }}"><i class="fa fa-user"></i> <span>People</span></a></li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Board Members</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/board-member-role') }}"><i class="fa fa-user"></i> <span>Roles</span></a></li>
+                      <li><a href="{{ url('admin/board-member') }}"><i class="fa fa-user"></i> <span>Board Members</span></a></li>
+                      <li><a href="{{ url('admin/board-member-registration') }}"><i class="fa fa-user"></i> <span>Registrations</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Coaches</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/coach-role') }}"><i class="fa fa-user"></i> <span>Roles</span></a></li>
+                      <li><a href="{{ url('admin/coach') }}"><i class="fa fa-user"></i> <span>Coach</span></a></li>
+                      <li><a href="{{ url('admin/coach-registration') }}"><i class="fa fa-user"></i> <span>Registration</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Athletes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/athlete-role') }}"><i class="fa fa-user"></i> <span>Roles</span></a></li>
+                      <li><a href="{{ url('admin/athlete') }}"><i class="fa fa-user"></i> <span>Athletes</span></a></li>
+                      <li><a href="{{ url('admin/athlete-registration') }}"><i class="fa fa-user"></i> <span>Registrations</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Team Assistants</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/team-assistant') }}"><i class="fa fa-user"></i> <span>Team Assistants</span></a></li>
+                      <li><a href="{{ url('admin/team-assistant-registration') }}"><i class="fa fa-user"></i> <span>Registrations</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Therapists</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/therapist') }}"><i class="fa fa-user"></i> <span>Therapists</span></a></li>
+                      <li><a href="{{ url('admin/therapist-registration') }}"><i class="fa fa-user"></i> <span>Registrations</span></a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="treeview">
+                <a href="#"><i class="fa fa-building-o"></i> <span>Sports</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Competitions</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/sport-competition') }}"><i class="fa fa-user"></i> <span>Competitions</span></a></li>
+                      <li><a href="{{ url('admin/phase') }}"><i class="fa fa-user"></i> <span>Phases</span></a></li>
+                      <li><a href="{{ url('admin/lap') }}"><i class="fa fa-user"></i> <span>Laps</span></a></li>
+                      <li><a href="{{ url('admin/round') }}"><i class="fa fa-user"></i> <span>Rounds</span></a></li>
+                      <li><a href="{{ url('admin/game') }}"><i class="fa fa-user"></i> <span>Games</span></a></li>
+                      <li><a href="{{ url('admin/rank') }}"><i class="fa fa-user"></i> <span>Ranks</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-building-o"></i> <span>Teams</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                      <li><a href="{{ url('admin/sport-team') }}"><i class="fa fa-user"></i> <span>Teams</span></a></li>
+                      <li><a href="{{ url('admin/sport-team-registration') }}"><i class="fa fa-user"></i> <span>Registrations</span></a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{ url('admin/sport-modality') }}"><i class="fa fa-user"></i> <span>Modalities</span></a></li>
+                  <li><a href="{{ url('admin/sport-season') }}"><i class="fa fa-user"></i> <span>Seasons</span></a></li>
+                  <li><a href="{{ url('admin/sport-venue') }}"><i class="fa fa-user"></i> <span>Venues</span></a></li>
+                  <li><a href="{{ url('admin/age-gender-group') }}"><i class="fa fa-user"></i> <span>Age Gender Groups</span></a></li>
+                  <li><a href="{{ url('admin/competition-level') }}"><i class="fa fa-user"></i> <span>Competition Levels</span></a></li>
+                </ul>
+              </li>
+              <!--
+              <li><a href="{{ url('admin/season') }}"><i class="fa fa-calendar"></i> <span>Seasons</span></a></li>
+              <li><a href="{{ url('admin/team') }}"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+              <li><a href="{{ url('admin/game') }}"><i class="fa fa-calendar"></i> <span>Games &amp; Schedules</span></a></li> -->
             </ul>
           </li>
 

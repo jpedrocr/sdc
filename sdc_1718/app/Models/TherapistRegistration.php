@@ -22,6 +22,7 @@ class TherapistRegistration extends Model
     protected $fillable = ['therapist_id', 'sport_team_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['sport_organization_name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ class TherapistRegistration extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getSportOrganizationNameAttribute()
+	{
+		return $this->sport_team->sport_organization->name;
+	}
 
     /*
     |--------------------------------------------------------------------------

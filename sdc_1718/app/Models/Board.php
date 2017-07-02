@@ -34,11 +34,11 @@ class Board extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-	public function sport_organization()
+    public function sport_organization()
 	{
 		return $this->belongsTo('App\Models\SportOrganization');
 	}
-	public function board_registrations()
+    public function board_registrations()
     {
         return $this->hasMany('App\Models\BoardRegistration');
     }

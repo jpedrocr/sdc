@@ -42,13 +42,13 @@ class Phase extends Model
     {
         return $this->hasMany('App\Models\Lap');
     }
+    public function ranks()
+    {
+        return $this->hasMany('App\Models\Rank');
+    }
 	public function rounds()
     {
         return $this->hasMany('App\Models\Round');
-    }
-	public function ranks()
-    {
-        return $this->hasMany('App\Models\Rank');
     }
 
     /*

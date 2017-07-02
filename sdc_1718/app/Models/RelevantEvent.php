@@ -22,6 +22,7 @@ class RelevantEvent extends Model
     protected $fillable = ['event_date', 'alternative_date', 'description', 'sport_organization_id'];
     // protected $hidden = [];
     protected $dates = ['event_date'];
+	protected $appends = ['date'];
 
     /*
     |--------------------------------------------------------------------------
@@ -50,6 +51,10 @@ class RelevantEvent extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getDateAttribute()
+	{
+		return (isset($this->event_date)) ? $this->event_date : $this->alternative_date;
+	}
 
     /*
     |--------------------------------------------------------------------------

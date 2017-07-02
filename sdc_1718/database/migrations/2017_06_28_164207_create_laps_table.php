@@ -14,7 +14,7 @@ class CreateLapsTable extends Migration
     {
         Schema::create('laps', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('phase_id')->unsigned()->unique();
+            $table->integer('phase_id')->unsigned();
             $table->foreign('phase_id')->references('id')->on('phases');
             $table->string('name');
             $table->timestamps();

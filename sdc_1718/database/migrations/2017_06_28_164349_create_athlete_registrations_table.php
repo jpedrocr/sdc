@@ -14,11 +14,11 @@ class CreateAthleteRegistrationsTable extends Migration
     {
         Schema::create('athlete_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('athlete_id')->unsigned()->unique();
+            $table->integer('athlete_id')->unsigned();
             $table->foreign('athlete_id')->references('id')->on('athletes');
-            $table->integer('sport_team_id')->unsigned()->unique();
+            $table->integer('sport_team_id')->unsigned();
             $table->foreign('sport_team_id')->references('id')->on('sport_teams');
-            $table->integer('athlete_role_id')->unsigned()->unique();
+            $table->integer('athlete_role_id')->unsigned();
             $table->foreign('athlete_role_id')->references('id')->on('athlete_roles');
             $table->timestamps();
         });

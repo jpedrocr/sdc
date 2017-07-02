@@ -36,7 +36,7 @@ class Sponsor extends Model
     */
 	public function sport_teams()
     {
-        return $this->belongsToMany('App\SportTeam', 'sponsor_team', 'sponsor_id', 'sport_team_id');
+        return $this->belongsToMany('App\Models\SportTeam', 'sponsor_team', 'sponsor_id', 'sport_team_id');
     }
 
     /*

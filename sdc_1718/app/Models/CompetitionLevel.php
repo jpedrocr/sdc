@@ -50,13 +50,13 @@ class CompetitionLevel extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function sport_competitions()
+    {
+        return $this->hasMany('App\Models\SportCompetition');
+    }
 	public function sport_teams()
     {
         return $this->hasMany('App\Models\SportTeam');
-    }
-	public function sport_competitions()
-    {
-        return $this->hasMany('App\Models\SportCompetition');
     }
 
     /*

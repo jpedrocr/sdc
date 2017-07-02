@@ -28,13 +28,13 @@ class Round extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-	public function phase()
-    {
-        return $this->belongsTo('App\Models\Phase');
-    }
-	public function lap()
+    public function lap()
     {
         return $this->belongsTo('App\Models\Lap');
+    }
+    public function phase()
+    {
+        return $this->belongsTo('App\Models\Phase');
     }
 	public function games()
     {

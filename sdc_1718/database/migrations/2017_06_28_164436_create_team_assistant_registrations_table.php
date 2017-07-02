@@ -14,9 +14,9 @@ class CreateTeamAssistantRegistrationsTable extends Migration
     {
         Schema::create('team_assistant_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('team_assistant_id')->unsigned()->unique();
+            $table->integer('team_assistant_id')->unsigned();
             $table->foreign('team_assistant_id')->references('id')->on('team_assistants');
-            $table->integer('sport_team_id')->unsigned()->unique();
+            $table->integer('sport_team_id')->unsigned();
             $table->foreign('sport_team_id')->references('id')->on('sport_teams');
             $table->timestamps();
         });

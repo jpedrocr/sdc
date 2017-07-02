@@ -14,9 +14,9 @@ class CreateSportTeamRegistrationsTable extends Migration
     {
         Schema::create('sport_team_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sport_team_id')->unsigned()->unique();
+            $table->integer('sport_team_id')->unsigned();
             $table->foreign('sport_team_id')->references('id')->on('sport_teams');
-            $table->integer('sport_competition_id')->unsigned()->unique();
+            $table->integer('sport_competition_id')->unsigned();
             $table->foreign('sport_competition_id')->references('id')->on('sport_competitions');
             $table->timestamps();
         });

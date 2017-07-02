@@ -14,11 +14,11 @@ class CreateCoachRegistrationsTable extends Migration
     {
         Schema::create('coach_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sport_team_id')->unsigned()->unique();
+            $table->integer('sport_team_id')->unsigned();
             $table->foreign('sport_team_id')->references('id')->on('sport_teams');
-            $table->integer('coach_id')->unsigned()->unique();
+            $table->integer('coach_id')->unsigned();
             $table->foreign('coach_id')->references('id')->on('coaches');
-            $table->integer('coach_role_id')->unsigned()->unique();
+            $table->integer('coach_role_id')->unsigned();
             $table->foreign('coach_role_id')->references('id')->on('coach_roles');
             $table->timestamps();
         });

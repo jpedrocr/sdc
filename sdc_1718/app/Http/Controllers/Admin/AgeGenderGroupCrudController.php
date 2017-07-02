@@ -20,7 +20,7 @@ class AgeGenderGroupCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\AgeGenderGroup');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/age-gender-group');
-        $this->crud->setEntityNameStrings('age & gender group', 'age & gender groups');
+        $this->crud->setEntityNameStrings('age gender group', 'age gender groups');
 
         /*
         |--------------------------------------------------------------------------

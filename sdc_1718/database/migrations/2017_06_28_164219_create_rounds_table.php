@@ -14,10 +14,10 @@ class CreateRoundsTable extends Migration
     {
         Schema::create('rounds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('phase_id')->unsigned()->unique();
+            $table->integer('phase_id')->unsigned();
             $table->foreign('phase_id')->references('id')->on('phases');
-            $table->integer('number')->unsigned()->unique();
-            $table->integer('lap_id')->unsigned()->unique()->nullable();
+            $table->integer('number')->unsigned();
+            $table->integer('lap_id')->unsigned()->nullable();
             $table->foreign('lap_id')->references('id')->on('laps');
             $table->timestamps();
         });

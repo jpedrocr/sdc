@@ -32,20 +32,14 @@ class CoachCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Person",
 							    'name' => 'person_id',
+                                'label' => 'Person',
 								'type' => 'select2',
 							    'entity' => 'person',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Person",
+							    'model' => 'App\Models\Person',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
-		$this->crud->addField([
-							    'name' => 'coach_grade',
-							    'label' => 'Coach Grade',
-							    'type' => 'text',
-								'wrapperAttributes' => ['class' => 'form-group col-md-4']
-		]);
 		$this->crud->addField([
                                 'name' => 'license',
                                 'label' => 'License',
@@ -58,6 +52,12 @@ class CoachCrudController extends CrudController
                                 'type' => 'number',
 								'wrapperAttributes' => ['class' => 'form-group col-md-4']
         ]);
+		$this->crud->addField([
+							    'name' => 'coach_grade',
+							    'label' => 'Coach Grade',
+							    'type' => 'text',
+								'wrapperAttributes' => ['class' => 'form-group col-md-4']
+		]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
@@ -65,16 +65,12 @@ class CoachCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Person",
 								'name' => 'person_id',
+                                'label' => 'Person',
 								'type' => 'select',
 								'entity' => 'person',
 								'attribute' => 'name',
-								'model' => "App\Models\Person",
-        ]);
-		$this->crud->addColumn([
-								'name' => 'coach_grade',
-								'label' => 'Coach Grade',
+								'model' => 'App\Models\Person',
         ]);
 		$this->crud->addColumn([
 								'name' => 'license',
@@ -84,6 +80,10 @@ class CoachCrudController extends CrudController
 								'name' => 'fpb_id',
 								'label' => 'FPB Id',
         ]);
+		$this->crud->addColumn([
+								'name' => 'coach_grade',
+								'label' => 'Coach Grade',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -92,6 +92,7 @@ class CoachCrudController extends CrudController
         // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
 
         // ------ CRUD BUTTONS
+		$this->crud->addButtonFromModelFunction('line', 'go_to_fpb', 'getFpbButton', 'end');
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model

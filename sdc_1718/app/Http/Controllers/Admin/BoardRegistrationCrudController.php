@@ -19,8 +19,8 @@ class BoardRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\BoardRegistration');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-registration');
-        $this->crud->setEntityNameStrings('board registration', 'board registrations');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/board-member-registration');
+        $this->crud->setEntityNameStrings('board member registration', 'board member registrations');
 
         /*
         |--------------------------------------------------------------------------
@@ -32,39 +32,39 @@ class BoardRegistrationCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Biennium",
+                                'name' => 'biennium_id',
+                                'label' => 'Biennium',
 							    'type' => 'select2',
-							    'name' => 'biennium_id',
 							    'entity' => 'biennium',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Biennium",
+							    'model' => 'App\Models\Biennium',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
 		$this->crud->addField([
-								'label' => "Board",
-							    'type' => 'select2',
 							    'name' => 'board_id',
+                                'label' => 'Board',
+                                'type' => 'select2',
 							    'entity' => 'board',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Board",
+							    'model' => 'App\Models\Board',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
 		$this->crud->addField([
-								'label' => "Board Role",
-							    'type' => 'select2',
 							    'name' => 'board_role_id',
-							    'entity' => 'board_role',
+                                'label' => 'Board Role',
+                                'type' => 'select2',
+							    'entity' => 'board_membe_role',
 							    'attribute' => 'name',
-							    'model' => "App\Models\BoardRole",
+							    'model' => 'App\Models\BoardRole',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
 		$this->crud->addField([
-								'label' => "Board Member",
-							    'type' => 'select2',
 							    'name' => 'board_member_id',
+                                'label' => 'Board Member',
+                                'type' => 'select2',
 							    'entity' => 'board_member',
 							    'attribute' => 'name',
-							    'model' => "App\Models\BoardMember",
+							    'model' => 'App\Models\BoardMember',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
         // $this->crud->addField($options, 'update/create/both');
@@ -74,36 +74,40 @@ class BoardRegistrationCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Biennium",
-							    'type' => 'select',
+							    'name' => 'sport_organization_name',
+                                'label' => 'Sport Organization',
+        ]);
+		$this->crud->addColumn([
 							    'name' => 'biennium_id',
+                                'label' => 'Biennium',
+                                'type' => 'select',
 							    'entity' => 'biennium',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Biennium",
+							    'model' => 'App\Models\Biennium',
         ]);
 		$this->crud->addColumn([
-								'label' => "Board",
-							    'type' => 'select',
 							    'name' => 'board_id',
+                                'label' => 'Board',
+                                'type' => 'select',
 							    'entity' => 'board',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Board",
+							    'model' => 'App\Models\Board',
         ]);
 		$this->crud->addColumn([
-								'label' => "Board Role",
-							    'type' => 'select',
 							    'name' => 'board_role_id',
+                                'label' => 'Board Role',
+                                'type' => 'select',
 							    'entity' => 'board_role',
 							    'attribute' => 'name',
-							    'model' => "App\Models\BoardRole",
+							    'model' => 'App\Models\BoardRole',
         ]);
 		$this->crud->addColumn([
-								'label' => "Board Member",
-							    'type' => 'select',
 							    'name' => 'board_member_id',
+                                'label' => 'Board Member',
+                                'type' => 'select',
 							    'entity' => 'board_member',
 							    'attribute' => 'name',
-							    'model' => "App\Models\BoardMember",
+							    'model' => 'App\Models\BoardMember',
         ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack

@@ -14,11 +14,11 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('round_id')->unsigned()->unique();
+            $table->integer('round_id')->unsigned();
             $table->foreign('round_id')->references('id')->on('rounds');
             $table->integer('fpb_id')->unsigned()->unique()->nullable();
             $table->datetime('schedule')->nullable();
-			$table->integer('sport_team_home_id')->unsigned()->unique()->nullable();
+			$table->integer('sport_team_home_id')->unsigned()->nullable();
             $table->foreign('sport_team_home_id')->references('id')->on('sport_teams');
 			$table->integer('sport_team_out_id')->unsigned()->unique()->nullable();
             $table->foreign('sport_team_out_id')->references('id')->on('sport_teams');

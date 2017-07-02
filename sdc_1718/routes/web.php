@@ -38,8 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 	CRUD::resource('person', 'PersonCrudController');
 
 	CRUD::resource('board-member', 'BoardMemberCrudController');
-	CRUD::resource('board-role', 'BoardRoleCrudController');
-	CRUD::resource('board-registration', 'BoardRegistrationCrudController');
+	CRUD::resource('board-member-role', 'BoardRoleCrudController');
+	CRUD::resource('board-member-registration', 'BoardRegistrationCrudController');
 
 	CRUD::resource('sport-modality', 'SportModalityCrudController');
 	CRUD::resource('sport-season', 'SportSeasonCrudController');

@@ -19,8 +19,8 @@ class TherapistRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\TherapistRegistration');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/therapistregistration');
-        $this->crud->setEntityNameStrings('therapistregistration', 'therapist_registrations');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/therapist-registration');
+        $this->crud->setEntityNameStrings('therapist registration', 'therapist registrations');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,15 +28,53 @@ class TherapistRegistrationCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+		$this->crud->addField([
+							    'name' => 'sport_team_id',
+                                'label' => 'Sport Team',
+                                'type' => 'select2',
+							    'entity' => 'sport_team',
+							    'attribute' => 'name_and_season',
+							    'model' => 'App\Models\SportTeam',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
+		$this->crud->addField([
+							    'name' => 'therapist_id',
+                                'label' => 'Therapist',
+                                'type' => 'select2',
+							    'entity' => 'therapist',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\Therapist',
+								'wrapperAttributes' => ['class' => 'form-group col-md-12']
+        ]);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn([
+							    'name' => 'sport_organization_name',
+                                'label' => 'Sport Organization',
+        ]);
+        $this->crud->addColumn([
+							    'name' => 'sport_team_id',
+                                'label' => 'Sport Team',
+                                'type' => 'select',
+							    'entity' => 'sport_team',
+							    'attribute' => 'name_and_season',
+							    'model' => 'App\Models\SportTeam',
+        ]);
+		$this->crud->addColumn([
+							    'name' => 'therapist_id',
+                                'label' => 'Therapist',
+                                'type' => 'select',
+							    'entity' => 'therapist',
+							    'attribute' => 'name',
+							    'model' => 'App\Models\Therapist',
+        ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

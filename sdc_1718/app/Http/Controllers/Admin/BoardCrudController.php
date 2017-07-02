@@ -32,12 +32,12 @@ class BoardCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Sport Organization",
+                                'name' => 'sport_organization_id',
+                                'label' => 'Sport Organization',
 							    'type' => 'select',
-							    'name' => 'sport_organization_id',
 							    'entity' => 'sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
 								'value' => 2,
 								'wrapperAttributes' => ['class' => 'form-group col-md-4']
         ]);
@@ -54,12 +54,12 @@ class BoardCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Sport Organization",
+                                'name' => 'sport_organization_id',
+                                'label' => 'Sport Organization',
 							    'type' => 'select',
-							    'name' => 'sport_organization_id',
 							    'entity' => 'sport_organization',
 							    'attribute' => 'name',
-							    'model' => "App\Models\SportOrganization",
+							    'model' => 'App\Models\SportOrganization',
         ]);
 		$this->crud->addColumn([
 								'name' => 'name',

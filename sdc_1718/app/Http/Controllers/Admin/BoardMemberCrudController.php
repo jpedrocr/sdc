@@ -32,12 +32,12 @@ class BoardMemberCrudController extends CrudController
 
         // ------ CRUD FIELDS
 		$this->crud->addField([
-								'label' => "Person",
+								'label' => 'Person',
 							    'type' => 'select2',
 							    'name' => 'person_id',
 							    'entity' => 'person',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Person",
+							    'model' => 'App\Models\Person',
 								'wrapperAttributes' => ['class' => 'form-group col-md-12']
         ]);
         // $this->crud->addField($options, 'update/create/both');
@@ -47,12 +47,12 @@ class BoardMemberCrudController extends CrudController
 
         // ------ CRUD COLUMNS
 		$this->crud->addColumn([
-								'label' => "Person",
+								'label' => 'Person',
 							    'type' => 'select',
 							    'name' => 'person_id',
 							    'entity' => 'person',
 							    'attribute' => 'name',
-							    'model' => "App\Models\Person",
+							    'model' => 'App\Models\Person',
         ]);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack

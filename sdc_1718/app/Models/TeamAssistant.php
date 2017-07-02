@@ -22,6 +22,7 @@ class TeamAssistant extends Model
     protected $fillable = ['person_id', 'license', 'fpb_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['name'];
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +55,16 @@ class TeamAssistant extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+	public function getNameAttribute()
+    {
+        return $this->person->name;
+    }
+	public function getFpbButton() {
+		if (isset($this->fpb_id)) {
+			return '<a href="http://www.fpb.pt/fpb2014/!site.go?s=1&show=ehu&id=' . $this->fpb_id . '" target="_blank" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> FPB</a>';
+		}
+		return '';
+	}
 
     /*
     |--------------------------------------------------------------------------

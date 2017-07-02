@@ -25,6 +25,7 @@ class SportTeam extends Model
     protected $fillable = ['name', 'image', 'url', 'slug', 'fpb_id', 'sport_organization_id', 'sport_modality_id', 'sport_season_id', 'age_gender_group_id', 'competition_level_id'];
     // protected $hidden = [];
     // protected $dates = [];
+	protected $appends = ['name_and_season'];
 
     /*
     |--------------------------------------------------------------------------
@@ -50,19 +51,7 @@ class SportTeam extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-	public function sport_organization()
-    {
-        return $this->belongsTo('App\Models\SportOrganization');
-    }
-	public function sport_modality()
-    {
-        return $this->belongsTo('App\Models\SportModality');
-    }
-	public function sport_season()
-    {
-        return $this->belongsTo('App\Models\SportSeason');
-    }
-	public function age_gender_group()
+    public function age_gender_group()
     {
         return $this->belongsTo('App\Models\AgeGenderGroup');
     }
@@ -70,13 +59,41 @@ class SportTeam extends Model
     {
         return $this->belongsTo('App\Models\CompetitionLevel');
     }
+    public function sport_modality()
+    {
+        return $this->belongsTo('App\Models\SportModality');
+    }
+	public function sport_organization()
+    {
+        return $this->belongsTo('App\Models\SportOrganization');
+    }
+	public function sport_season()
+    {
+        return $this->belongsTo('App\Models\SportSeason');
+    }
+    public function athlete_registrations()
+    {
+        return $this->hasMany('App\Models\AthleteRegistration');
+    }
 	public function coach_registrations()
     {
         return $this->hasMany('App\Models\CoachRegistration');
     }
-	public function athlete_registrations()
+    public function games_home()
     {
-        return $this->hasMany('App\Models\AthleteRegistration');
+        return $this->hasMany('App\Models\Game', 'sport_team_home_id');
+    }
+	public function games_out()
+    {
+        return $this->hasMany('App\Models\Game', 'sport_team_out_id');
+    }
+    public function ranks()
+    {
+        return $this->hasMany('App\Models\Rank');
+    }
+    public function sport_team_registrations()
+    {
+        return $this->hasMany('App\Models\SportTeamRegistration');
     }
 	public function team_assistant_registrations()
     {
@@ -86,25 +103,9 @@ class SportTeam extends Model
     {
         return $this->hasMany('App\Models\TherapistRegistration');
     }
-	public function sport_team_registrations()
-    {
-        return $this->hasMany('App\Models\SportTeamRegistration');
-    }
-	public function ranks()
-    {
-        return $this->hasMany('App\Models\Rank');
-    }
-	public function games_home()
-    {
-        return $this->hasMany('App\Models\Game', 'sport_team_home_id');
-    }
-	public function games_out()
-    {
-        return $this->hasMany('App\Models\Game', 'sport_team_out_id');
-    }
 	public function sponsors()
     {
-        return $this->belongsToMany('App\Sponsor', 'sponsor_team', 'sport_team_id', 'sponsor_id');
+        return $this->belongsToMany('App\Models\Sponsor', 'sponsor_team', 'sport_team_id', 'sponsor_id');
     }
 
     /*
@@ -127,6 +128,16 @@ class SportTeam extends Model
 
         return $this->name;
     }
+    public function getNameAndSeasonAttribute()
+    {
+        return $this->sport_season->name . ' - ' . $this->name . ' - ' . $this->age_gender_group->name_and_gender;
+    }
+	public function getFpbButton() {
+		if (isset($this->fpb_id)) {
+			return '<a href="http://www.fpb.pt/fpb2014/!site.go?s=1&show=equ&id=' . $this->fpb_id . '" target="_blank" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> FPB</a>';
+		}
+		return '';
+	}
 
     /*
     |--------------------------------------------------------------------------
